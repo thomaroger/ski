@@ -30,7 +30,7 @@
         </select>
   </div>
   <div class="col-1"> <br />
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Filtrer </button>
   </div>
 </form>
 </div>
@@ -54,7 +54,11 @@
     <tr>
         <th scope="row">{{date}}</th>
         {% for id, group in groupsHeaders %}
-            <td {% if sessions[id].test is defined and sessions[id].test==true %}class="table-danger" {% endif %}>{% if sessions[id].name is defined %} {{sessions[id].name}} {% endif %}</td>
+            <td class="
+            {% if sessions[id].test is defined and sessions[id].test==true %}table-success {% endif %} {% if sessions[id].race is defined and sessions[id].race==true %}table-info {% endif %}
+            {% if sessions[id].additional is defined and sessions[id].additional==true %}table-primary {% endif %}
+            {% if sessions[id].cancel is defined and sessions[id].cancel==true %}table-danger{% endif %}"
+            >{% if sessions[id].name is defined %} {{sessions[id].name}} {% endif %}</td>
         {% endfor %}
     </tr>
     {% endfor %}

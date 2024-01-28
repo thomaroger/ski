@@ -31,6 +31,15 @@ class Session
     #[ORM\Column]
     private ?bool $test = null;
 
+    #[ORM\Column]
+    private ?bool $race = null;
+
+    #[ORM\Column]
+    private ?bool $additional = null;
+
+    #[ORM\Column]
+    private ?bool $cancel = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +101,42 @@ class Session
     public function setTest(bool $test): static
     {
         $this->test = $test;
+
+        return $this;
+    }
+
+    public function isRace(): ?bool
+    {
+        return $this->race;
+    }
+
+    public function setRace(bool $race): static
+    {
+        $this->race = $race;
+
+        return $this;
+    }
+
+    public function isAdditional(): ?bool
+    {
+        return $this->additional;
+    }
+
+    public function setAdditional(bool $additional): static
+    {
+        $this->additional = $additional;
+
+        return $this;
+    }
+
+    public function isCancel(): ?bool
+    {
+        return $this->cancel;
+    }
+
+    public function setCancel(bool $cancel): static
+    {
+        $this->cancel = $cancel;
 
         return $this;
     }

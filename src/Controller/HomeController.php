@@ -48,6 +48,9 @@ class HomeController extends AbstractController
                 $groupsHeaders[$session->getGroupname()->getId()] = $session->getGroupname()->__toStringForFront();
                 $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['name'] = $session->getName().' : '.$session->getMonitor()->__toString();
                 $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['test'] = $session->isTest();
+                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['cancel'] = $session->isCancel();
+                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['race'] = $session->isRace();
+                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['additional'] = $session->isadditional();
             }
         }
         asort($groupsHeaders);
