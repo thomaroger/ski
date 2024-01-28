@@ -18,7 +18,7 @@ class CSVController extends AbstractController
     {
         $rowNo = 0;
            // $fp is file pointer to file sample.csv
-        if (($fp = fopen("http://127.0.0.1:8000/img/sessions.csv", "r")) !== FALSE) {
+        if (($fp = fopen("https://ski.thomaroger.fr/img/sessions.csv", "r")) !== FALSE) {
             while (($row = fgetcsv($fp, 1000, ",")) !== FALSE) {
                 $num = count($row);
                 $rowNo++;
