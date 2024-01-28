@@ -44,6 +44,7 @@ class GroupController extends AbstractController
         }
 
         return $this->render('home/groups.html.twig', [
+            "page" => 'group',
             "groups" => $groups,
             "children" => $children,
             "groupsHeaders" => $groupsHeaders,

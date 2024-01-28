@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="form-signin w-100 m-auto text-center">
-        <img class="mb-4" src="/img/person-skiing-solid.svg" alt="" style='width:40px; height:40px'> &nbsp; <b></b> 
+        <a href="/"><img class="mb-4" src="/img/person-skiing-solid.svg" alt="" style='width:40px; height:40px'></a> &nbsp; <b></b> 
         {% if error %}
         <div class="alert alert-danger" role="alert">
             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>

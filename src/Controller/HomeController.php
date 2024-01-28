@@ -59,6 +59,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/index.html.twig', [
+            "page" => 'home',
             "groups" => $groups,
             "children" => $children,
             "groupsHeaders" => $groupsHeaders,

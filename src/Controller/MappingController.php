@@ -29,7 +29,9 @@ class MappingController extends AbstractController
 
 
         return $this->render('mapping/index.html.twig', [
+            "page" => 'mapping',
             "datasessions" => $datasessions,
+
         ]);
     }
 }
