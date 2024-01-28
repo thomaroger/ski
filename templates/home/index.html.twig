@@ -54,7 +54,7 @@
     <tr>
         <th scope="row">{{date}}</th>
         {% for id, group in groupsHeaders %}
-            <td>{% if sessions[id] is defined %} {{sessions[id]}} {% endif %}</td>
+            <td {% if sessions[id].test is defined and sessions[id].test==true %}class="table-danger" {% endif %}>{% if sessions[id].name is defined %} {{sessions[id].name}} {% endif %}</td>
         {% endfor %}
     </tr>
     {% endfor %}

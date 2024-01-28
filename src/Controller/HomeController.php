@@ -39,15 +39,20 @@ class HomeController extends AbstractController
         }
 
 
-        $groups = $entityManager->getRepository(Group::class)->findAll();
-        $children = $entityManager->getRepository(Child::class)->findAll();
-        $sessions = $entityManager->getRepository(Session::class)->findBy($filters);
+        $groups = $entityManager->getRepository(Group::class)->findBy([], array('name' => 'ASC'));
+        $children = $entityManager->getRepository(Child::class)->findBy([], array('lastname' => 'ASC'));
+        $sessions = $entityManager->getRepository(Session::class)->findBy($filters, array('date' => 'ASC'));
 
         foreach($sessions as $session) {
             if($session->getDate()->getDate() >= $currentDate) {
                 $groupsHeaders[$session->getGroupname()->getId()] = $session->getGroupname()->__toStringForFront();
-                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()] = $session->getName().' : '.$session->getMonitor()->__toString();
+                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['name'] = $session->getName().' : '.$session->getMonitor()->__toString();
+                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['test'] = $session->isTest();
             }
+        }
+        asort($groupsHeaders);
+        foreach($datasessions as $key => $session) {
+            asort($session);
         }
 
         return $this->render('home/index.html.twig', [
