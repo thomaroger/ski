@@ -69,7 +69,7 @@
             {% if sessions[id].race is defined and sessions[id].race==true %}table-info {% endif %}
             {% if sessions[id].additional is defined and sessions[id].additional==true %}table-primary {% endif %}
             {% if sessions[id].cancel is defined and sessions[id].cancel==true %}table-danger{% endif %}"
-            >{% if sessions[id].name is defined %} {{sessions[id].name}} {% endif %}</td>
+            >{% if sessions[id].name is defined %} {{sessions[id].name|raw}} {% endif %}</td>
         {% endfor %}
     </tr>
     {% endfor %}
