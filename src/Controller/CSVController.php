@@ -1,5 +1,6 @@
 <?php
-
+die;
+/*
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -88,4 +89,4 @@ class CSVController extends AbstractController
         }
            die;
     }
-}
+}*/
