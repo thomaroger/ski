@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="form-signin w-100 m-auto text-center">
-        <a href="/"><img class="mb-4" src="/img/person-skiing-solid.svg" alt="" style='width:40px; height:40px'></a> &nbsp; <b></b> 
+        <a href="/" style="color:black;text-decoration:none"><img class="mb-4" src="/img/person-skiing-solid.svg" alt="" style='width:40px; height:40px'>&nbsp; <p style="line-height:40px;"> <b>Ski Club de Bogève et Viuz en Sallaz</b></p></a> 
         {% if error %}
         <div class="alert alert-danger" role="alert">
             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>

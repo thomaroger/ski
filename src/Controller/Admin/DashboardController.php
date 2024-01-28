@@ -29,7 +29,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Ski');
+            ->setTitle('Ski Club de Bogève et Viuz en Sallaz - Backoffice');
     }
 
     public function configureMenuItems(): iterable
