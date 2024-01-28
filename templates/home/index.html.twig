@@ -40,6 +40,16 @@
 
 <div class=" my-5">
   <div class="p-5 text-center bg-body-tertiary rounded-3">
+  <table class="table">
+  <thead>
+      <tr>
+      <th scope="col" class="table-success">Passage d'étoile</th>
+      <th scope="col" class="table-primary">Session supplémentaire</th>
+      <th scope="col" class="table-info">Course</th>
+      <th scope="col" class="table-danger">Session annulée</th>
+      </tr>
+      </thead
+  </table>
     <table class="table table-striped">
   <thead>
     <tr>
@@ -55,7 +65,8 @@
         <th scope="row">{{date}}</th>
         {% for id, group in groupsHeaders %}
             <td class="
-            {% if sessions[id].test is defined and sessions[id].test==true %}table-success {% endif %} {% if sessions[id].race is defined and sessions[id].race==true %}table-info {% endif %}
+            {% if sessions[id].test is defined and sessions[id].test==true %}table-success {% endif %} 
+            {% if sessions[id].race is defined and sessions[id].race==true %}table-info {% endif %}
             {% if sessions[id].additional is defined and sessions[id].additional==true %}table-primary {% endif %}
             {% if sessions[id].cancel is defined and sessions[id].cancel==true %}table-danger{% endif %}"
             >{% if sessions[id].name is defined %} {{sessions[id].name}} {% endif %}</td>
