@@ -8,11 +8,8 @@ framework:
 
     #esi: true
     #fragments: true
-    trusted_proxies: '127.0.0.1,ski.thomaroger.fr'
-    # trust *all* "X-Forwarded-*" headers
+    trusted_proxies: '127.0.0.1,REMOTE_ADDR'
     trusted_headers: ['x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port', 'x-forwarded-prefix']
-    # or, if your proxy instead uses the "Forwarded" header
-    trusted_headers: ['forwarded']
 
 
 when@test:
