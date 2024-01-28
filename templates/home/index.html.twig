@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Planning{% endblock %}
+
+{% block body %}
+<!--<div class="container text-center">
+    <div class="alert alert-danger" role="alert">
+      A simple danger alert—check it out!
+    </div>
+</div>-->
+
+<div class="container">
+<form class="row align-items-center" method="POST">
+  <div class="col-5">
+    <label for="group" class="form-label"><b>Groupe : </b></label>
+        <select id="group" class="form-select" name="group">
+           <option value="0">Selectionner un groupe</option>
+           {% for group in groups %}
+            <option value="{{group.id}}" {% if group.id == postGroup %} selected="selected" {% endif %}>{{group}}</option>
+           {% endfor %}
+        </select>
+  </div>
+  <div class="col-6">
+    <label for="child" class="form-label"><b>Enfant :</b></label>
+        <select id="child" class="form-select" name="child">
+           <option value="0">Selectionner un enfant</option>
+           {% for child in children %}
+            <option value="{{child.id}}" {% if child.id == postChild %} selected="selected" {% endif %}>{{child}}</option>
+           {% endfor %}
+        </select>
+  </div>
+  <div class="col-1"> <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+</form>
+</div>
+
+
+
+
+<div class=" my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      {% for group in groupsHeaders %}
+        <th scope="col">{{group|raw}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+      {% for date, sessions in datasessions %}
+    <tr>
+        <th scope="row">{{date}}</th>
+        {% for id, group in groupsHeaders %}
+            <td>{% if sessions[id] is defined %} {{sessions[id]}} {% endif %}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+   
+  </tbody>
+</table>
+  </div>
+</div>
+
+<
+{% endblock %}
