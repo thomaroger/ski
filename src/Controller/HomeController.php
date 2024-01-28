@@ -20,6 +20,9 @@ class HomeController extends AbstractController
         $groupsHeaders = [];
         $datasessions = []; 
         $filters = [];
+        $currentDate = new \DateTime(); 
+        $interval = new \DateInterval('P1D');
+        $currentDate->sub($interval);
 
         $postChild = $request->getPayload()->get('child', 0);
         $postGroup = $request->getPayload()->get('group', 0);
@@ -35,13 +38,16 @@ class HomeController extends AbstractController
             $filters['Groupname'] = $entityManager->getRepository(Group::class)->find($postGroup);
         }
 
+
         $groups = $entityManager->getRepository(Group::class)->findAll();
         $children = $entityManager->getRepository(Child::class)->findAll();
         $sessions = $entityManager->getRepository(Session::class)->findBy($filters);
 
         foreach($sessions as $session) {
-            $groupsHeaders[$session->getGroupname()->getId()] = $session->getGroupname()->__toStringForFront();
-            $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()] = $session->getName().' : '.$session->getMonitor()->__toString();
+            if($session->getDate()->getDate() >= $currentDate) {
+                $groupsHeaders[$session->getGroupname()->getId()] = $session->getGroupname()->__toStringForFront();
+                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()] = $session->getName().' : '.$session->getMonitor()->__toString();
+            }
         }
 
         return $this->render('home/index.html.twig', [

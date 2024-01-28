@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mapping{% endblock %}
+
+{% block body %}
+<!--<div class="container text-center">
+    <div class="alert alert-danger" role="alert">
+      A simple danger alert—check it out!
+    </div>
+</div>-->
+
+<div class="container text-center">
+<div class="row">
+  {% for date, sessions in datasessions %}
+  <div class="col-12">
+    <ul class="list-group">
+    <li class="list-group-item list-group-item-secondary" aria-current="true">{{date}}</li>
+    {% for session in sessions %}
+    <li class="list-group-item">{{session}}</li>
+    {% endfor %}
+  </ul>
+  </div>
+  <div class="clearfix">&nbsp;</div>
+  {% endfor %}
+</div>
+  </div>
+
+
+
+{% endblock %}
