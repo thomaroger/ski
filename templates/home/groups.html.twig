@@ -3,7 +3,7 @@
 {% block title %}Ski Club de Bogève et Viuz en Sallaz - Groupes{% endblock %}
 
 {% block body %}
-{% if content is defined %}
+{% if content.type is defined %}
   <div class="container text-center">
       <div class="alert alert-{{content.type.name}}" role="alert">
         {{content.text}}
