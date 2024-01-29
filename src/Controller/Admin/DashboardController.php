@@ -16,6 +16,8 @@ use App\Entity\Club;
 use App\Entity\TypeMonitor;
 use App\Entity\Session;
 use App\Entity\User;
+use App\Entity\Content;
+use App\Entity\ContentType;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -48,8 +50,12 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Monitors', 'fa fa-user', Monitor::class),
             MenuItem::section('Session'),
             MenuItem::linkToCrud('Sessions', 'fa fa-person-skiing', Session::class), 
+            MenuItem::section('Communication'),
+            MenuItem::linkToCrud('ContentType', 'fa fa-palette', ContentType::class), 
+            MenuItem::linkToCrud('Content', 'fa fa-bell', Content::class), 
             MenuItem::section('Security'),
-            MenuItem::linkToCrud('User', 'fa fa-lock', User::class),    
+            MenuItem::linkToCrud('User', 'fa fa-lock', User::class), 
+
          ];
     }
 

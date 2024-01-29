@@ -24,8 +24,8 @@ class ChildCrudController extends AbstractCrudController
         return [
             TextField::new('firstname'),
             TextField::new('lastname'),
-            AssociationField::new('groupname')->autocomplete(),
-            AssociationField::new('club')->autocomplete(),
+            AssociationField::new('groupname'),
+            AssociationField::new('club'),
         ];
     }
     

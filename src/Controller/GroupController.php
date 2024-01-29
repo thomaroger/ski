@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Child;
 use App\Entity\Group;
 use App\Entity\Session;
+use App\Entity\Content;
 use Symfony\Component\HttpFoundation\Request;
 
 class GroupController extends AbstractController
@@ -37,6 +38,8 @@ class GroupController extends AbstractController
         $groups = $entityManager->getRepository(Group::class)->findAll();
         $children = $entityManager->getRepository(Child::class)->findAll();
         $sessions = $entityManager->getRepository(Session::class)->findBy($filters);
+        $content = $entityManager->getRepository(Content::class)->findOneBy([], array('id' => 'DESC'));
+
 
         foreach($sessions as $session) {
             $groupsHeaders[$session->getGroupname()->getId()] = $session->getGroupname()->__toStringForFront();
@@ -51,6 +54,7 @@ class GroupController extends AbstractController
             "datasessions" => $datasessions,
             "postChild" => $postChild,
             "postGroup" => $postGroup,
+            "content" => $content,
         ]);
     }
 }

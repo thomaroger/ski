@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Session;
+use App\Entity\Content;
+
 
 class MappingController extends AbstractController
 {
@@ -18,11 +20,17 @@ class MappingController extends AbstractController
         $currentDate->sub($interval);
         $datasessions = [];
 
-        $sessions = $entityManager->getRepository(Session::class)->findAll();
+        $sessions = $entityManager->getRepository(Session::class)->findBy(['cancel'=>false]);
+        $content = $entityManager->getRepository(Content::class)->findOneBy([], array('id' => 'DESC'));
+
 
         foreach($sessions as $session) {
             if($session->getDate()->getDate() >= $currentDate) {
-                $datasessions[$session->getDate()->__toString()][] = $session->getGroupname().' : '.$session->getName().' avec '.$session->getMonitor()->__toString();
+                $datasessions[$session->getDate()->__toString()][$session->getId()]['name'] = $session->getGroupname().' : '.$session->getName().' avec '.$session->getMonitor()->__toString();
+                $datasessions[$session->getDate()->__toString()][$session->getId()]['test'] = $session->isTest();
+                $datasessions[$session->getDate()->__toString()][$session->getId()]['cancel'] = $session->isCancel();
+                $datasessions[$session->getDate()->__toString()][$session->getId()]['race'] = $session->isRace();
+                $datasessions[$session->getDate()->__toString()][$session->getId()]['additional'] = $session->isadditional();
             }
         }
 
@@ -31,7 +39,7 @@ class MappingController extends AbstractController
         return $this->render('mapping/index.html.twig', [
             "page" => 'mapping',
             "datasessions" => $datasessions,
-
+            "content" => $content,
         ]);
     }
 }

@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Child;
 use App\Entity\Group;
 use App\Entity\Session;
+use App\Entity\Content;
 use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
@@ -42,6 +43,7 @@ class HomeController extends AbstractController
         $groups = $entityManager->getRepository(Group::class)->findBy([], array('name' => 'ASC'));
         $children = $entityManager->getRepository(Child::class)->findBy([], array('lastname' => 'ASC'));
         $sessions = $entityManager->getRepository(Session::class)->findBy($filters, array('date' => 'ASC'));
+        $content = $entityManager->getRepository(Content::class)->findOneBy([], array('id' => 'DESC'));
 
         foreach($sessions as $session) {
             if($session->getDate()->getDate() >= $currentDate) {
@@ -66,6 +68,7 @@ class HomeController extends AbstractController
             "datasessions" => $datasessions,
             "postChild" => $postChild,
             "postGroup" => $postGroup,
+            "content" => $content
         ]);
     }
 

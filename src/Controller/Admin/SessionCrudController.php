@@ -29,9 +29,9 @@ class SessionCrudController extends AbstractCrudController
             BooleanField::new('race'),
             BooleanField::new('additional'),
             BooleanField::new('cancel'),
-            AssociationField::new('Groupname')->autocomplete(),
-            AssociationField::new('date')->autocomplete(),
-            AssociationField::new('monitor')->autocomplete(),
+            AssociationField::new('Groupname'),
+            AssociationField::new('date'),
+            AssociationField::new('monitor'),
         ];
     }
 
