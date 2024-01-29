@@ -84,6 +84,7 @@ class Date
 
      public function getFullString() : string
     {
+        return $this->getDate()->format('d/m/Y'); 
         return $this->dayName[$this->getDate()->format('N')]." ".$this->getDate()->format('m')." ".$this->monthName[$this->getDate()->format('n')]." ".$this->getDate()->format('Y');
     }
 }
