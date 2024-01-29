@@ -68,7 +68,7 @@ class HomeController extends AbstractController
             "datasessions" => $datasessions,
             "postChild" => $postChild,
             "postGroup" => $postGroup,
-            "content" => $content
+            "content" => $content,
         ]);
     }
 
