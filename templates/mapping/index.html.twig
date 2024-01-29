@@ -33,7 +33,7 @@
             {% if session.race is defined and session.race==true %}list-group-item-info {% endif %}
             {% if session.additional is defined and session.additional==true %}list-group-item-primary {% endif %}
             {% if session.cancel is defined and session.cancel==true %}list-group-item-danger{% endif %}">
-      {{session.name}}
+      {{session.name|raw}}
     </li>
     {% endfor %}
   </ul>
