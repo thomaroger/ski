@@ -11,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: DateRepository::class)]
 class Date
 {
+    private $dayName = ['','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+    private $monthName = ['','Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -76,6 +79,11 @@ class Date
 
     public function __toString() : string
     {
-        return $this->getDate()->format('d/m/Y'); ;
+        return $this->getDate()->format('d/m/Y'); 
+    }
+
+     public function getFullString() : string
+    {
+        return $this->dayName[$this->getDate()->format('N')]." ".$this->getDate()->format('m')." ".$this->monthName[$this->getDate()->format('n')]." ".$this->getDate()->format('Y');
     }
 }

@@ -65,7 +65,7 @@
   <tbody>
       {% for date, sessions in datasessions %}
     <tr>
-        <th scope="row">{{date}}</th>
+        <th scope="row">{{sessions.date}}</th>
         {% for id, group in groupsHeaders %}
             <td class="
             {% if sessions[id].test is defined and sessions[id].test==true %}table-success {% endif %} 

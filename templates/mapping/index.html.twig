@@ -26,14 +26,15 @@
   {% for date, sessions in datasessions %}
   <div class="col-12">
     <ul class="list-group">
-    <li class="list-group-item list-group-item-secondary" aria-current="true">{{date}}</li>
-    {% for id,session in sessions %}
+    <li class="list-group-item list-group-item-secondary" aria-current="true">{{sessions.name}}</li>
+    {% for id,session in sessions['session'] %}
     <li class="list-group-item 
-            {% if sessions[id].test is defined and sessions[id].test==true %}list-group-item-success {% endif %} 
-            {% if sessions[id].race is defined and sessions[id].race==true %}list-group-item-info {% endif %}
-            {% if sessions[id].additional is defined and sessions[id].additional==true %}list-group-item-primary {% endif %}
-            {% if sessions[id].cancel is defined and sessions[id].cancel==true %}list-group-item-danger{% endif %}">
-    {{sessions[id].name|raw}}</li>
+            {% if session.test is defined and session.test==true %}list-group-item-success {% endif %} 
+            {% if session.race is defined and session.race==true %}list-group-item-info {% endif %}
+            {% if session.additional is defined and session.additional==true %}list-group-item-primary {% endif %}
+            {% if session.cancel is defined and session.cancel==true %}list-group-item-danger{% endif %}">
+      {{session.name}}
+    </li>
     {% endfor %}
   </ul>
   </div>

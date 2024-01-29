@@ -48,11 +48,12 @@ class HomeController extends AbstractController
         foreach($sessions as $session) {
             if($session->getDate()->getDate() >= $currentDate) {
                 $groupsHeaders[$session->getGroupname()->getId()] = $session->getGroupname()->__toStringForFront();
-                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['name'] = $session->getName().' : '.$session->getMonitor()->__toString();
-                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['test'] = $session->isTest();
-                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['cancel'] = $session->isCancel();
-                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['race'] = $session->isRace();
-                $datasessions[$session->getDate()->__toString()][$session->getGroupname()->getId()]['additional'] = $session->isadditional();
+                $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['name'] = $session->getName().' : '.$session->getMonitor()->__toString();
+                $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['test'] = $session->isTest();
+                $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['cancel'] = $session->isCancel();
+                $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['race'] = $session->isRace();
+                $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['additional'] = $session->isadditional();
+                $datasessions[$session->getDate()->getId()]['date'] = $session->getDate()->getFullString();
             }
         }
         asort($groupsHeaders);
