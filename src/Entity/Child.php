@@ -82,6 +82,6 @@ class Child
 
     public function __toString() : string
     {
-        return ucfirst($this->getFirstname()).' '.strtoupper($this->getLastname());
+        return strtoupper($this->getLastname()).' '.ucfirst($this->getFirstname());
     }
 }
