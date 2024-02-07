@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ski Club de Bogève et Viuz en Sallaz - Mapping{% endblock %}
+
+
+{% block body %}
+{% if content.type is defined %}
+  <div class="container text-center">
+      <div class="alert alert-{{content.type.name}}" role="alert">
+        {{content.text}}
+      </div>
+  </div>
+  <div class="clearfix">&nbsp;</div>
+{% endif %}
+
+
+
+<div class="container">
+<form class="row align-items-center" method="POST">
+  <div class="col-11">
+    <label for="monitor" class="form-label"><b>Moniteur : </b></label>
+        <select id="monitor" class="form-select" name="monitor">
+           <option value="0">Selectionner un moniteur</option>
+           {% for monitor in monitors %}
+            <option value="{{monitor.id}}" {% if monitor.id == postMonitor %} selected="selected" {% endif %}>{{monitor}}</option>
+           {% endfor %}
+        </select>
+  </div>
+  <div class="col-1"> <br />
+    <button type="submit" class="btn btn-success">Filtrer </button>
+  </div>
+</form>
+</div>
+
+
+  <div class="clearfix">&nbsp;</div>
+
+
+<div class="container text-center">
+<div class="row">
+  <div class="col-12">
+    <ul class="list-group">
+    <li class="list-group-item list-group-item-success">Passage d'étoile</li>
+    <li class="list-group-item list-group-item-primary">Session supplémentaire</li>
+    <li class="list-group-item list-group-item-info">Course</li>
+    </ul>
+  </div>
+  <div class="clearfix">&nbsp;</div>
+  {% for date, sessions in datasessions %}
+  <div class="col-12">
+    <ul class="list-group">
+    <li class="list-group-item list-group-item-secondary" aria-current="true">{{sessions.name}}</li>
+    {% for id,session in sessions['session'] %}
+    <li class="list-group-item 
+            {% if session.test is defined and session.test==true %}list-group-item-success {% endif %} 
+            {% if session.race is defined and session.race==true %}list-group-item-info {% endif %}
+            {% if session.additional is defined and session.additional==true %}list-group-item-primary {% endif %}
+            {% if session.cancel is defined and session.cancel==true %}list-group-item-danger{% endif %}">
+      {{session.name|raw}}
+    </li>
+    {% endfor %}
+  </ul>
+  </div>
+  <div class="clearfix">&nbsp;</div>
+  {% endfor %}
+</div>
+  </div>
+
+
+
+{% endblock %}
