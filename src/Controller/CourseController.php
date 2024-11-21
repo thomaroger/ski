@@ -40,7 +40,7 @@ class CourseController extends AbstractController
 
 
         foreach($sessions as $session) {
-            if($session->getDate()->getDate() >= $currentDate) {
+           // if($session->getDate()->getDate() >= $currentDate) {
                 $datasessions[$session->getDate()->getId()]['name'] = $session->getDate()->getFullString();
                 $datasessions[$session->getDate()->getId()]['session'][$session->getId()]['name'] = $session->getGroupname().' : '.$session->getName().' avec '.$session->getMonitor()->__toString();
                 $datasessions[$session->getDate()->getId()]['session'][$session->getId()]['test'] = $session->isTest();
@@ -48,7 +48,7 @@ class CourseController extends AbstractController
                 $datasessions[$session->getDate()->getId()]['session'][$session->getId()]['race'] = $session->isRace();
                 $datasessions[$session->getDate()->getId()]['session'][$session->getId()]['additional'] = $session->isadditional();
                 
-            }
+           // }
         }
 
 

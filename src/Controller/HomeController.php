@@ -46,7 +46,7 @@ class HomeController extends AbstractController
         $content = $entityManager->getRepository(Content::class)->findOneBy([], array('id' => 'DESC'));
 
         foreach($sessions as $session) {
-            if($session->getDate()->getDate() >= $currentDate) {
+            //if($session->getDate()->getDate() >= $currentDate) {
                 $groupsHeaders[$session->getGroupname()->getId()] = $session->getGroupname()->__toStringForFront();
                 $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['name'] = $session->getName().' : '.$session->getMonitor()->__toString();
                 $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['test'] = $session->isTest();
@@ -54,7 +54,7 @@ class HomeController extends AbstractController
                 $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['race'] = $session->isRace();
                 $datasessions[$session->getDate()->getId()][$session->getGroupname()->getId()]['additional'] = $session->isadditional();
                 $datasessions[$session->getDate()->getId()]['date'] = $session->getDate()->getFullString();
-            }
+           // }
         }
         asort($groupsHeaders);
         foreach($datasessions as $key => $session) {
